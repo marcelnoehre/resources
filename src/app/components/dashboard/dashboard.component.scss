@@ -1,0 +1,19 @@
+.dashboard-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+.dashboard-item {
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    display: inline-block;
+    min-width: auto;
+    padding: 1rem;
+}
+  
+.dashboard-item:hover {
+    transform: scale(1.05);
+}
+  
