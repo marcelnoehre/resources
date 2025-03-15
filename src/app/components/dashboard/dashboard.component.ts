@@ -10,5 +10,7 @@ import { DashboardItem } from '../../interfaces/dashboard-item.interface';
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
-  dashboardItems: DashboardItem[] = [];
+  dashboardItems: DashboardItem[] = [
+    { title: 'ANSI Colors', url: '/ansi-colors' }
+  ];
 }

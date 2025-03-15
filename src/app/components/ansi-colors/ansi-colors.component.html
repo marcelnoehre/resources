@@ -1,0 +1,19 @@
+<div class="ansi-colors-container">
+    <h1>ANSI Color Codes</h1>
+  
+    <h3>Basic Colors</h3>
+    @for (item of colors; track item) {
+        <div class="color-row" style="--color: {{ item.color }}; --bg-color: {{item.bgColor}}">
+            <button [cdkCopyToClipboard]="item.code" mat-icon-button>
+                <mat-icon>content_copy</mat-icon>
+            </button>
+            <div class="ansi-code">
+                <span>{{ item.code }}</span>
+            </div>
+            <div class="color-description">
+                <span>{{ item.desc }}</span>
+            </div>
+        </div>
+    }
+</div>
+  
