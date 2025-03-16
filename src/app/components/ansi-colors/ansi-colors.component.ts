@@ -13,7 +13,10 @@ import { RouterModule } from '@angular/router';
   styleUrl: './ansi-colors.component.scss'
 })
 export class AnsiColorsComponent implements OnInit {
-  colors!: AnsiColors;
+  colors: AnsiColors = {
+    basic: [],
+    special: []
+  };
   
   constructor(
     private dataService: DataService
