@@ -5,9 +5,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { DataService } from '../../services/data.service';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { MatButtonModule } from '@angular/material/button';
+import { RouterModule } from '@angular/router';
 
 @Component({
-  imports: [MatTableModule, MatButtonModule, MatIconModule, ClipboardModule],
+  imports: [MatTableModule, MatButtonModule, MatIconModule, ClipboardModule, RouterModule],
   templateUrl: './ansi-colors.component.html',
   styleUrl: './ansi-colors.component.scss'
 })
