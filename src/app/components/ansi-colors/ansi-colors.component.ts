@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AnsiColor } from '../../interfaces/ansi-color.interface';
+import { AnsiColors } from '../../interfaces/ansi-color.interface';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { DataService } from '../../services/data.service';
-import { AnsiColorType } from '../../enums/ansi-color-type';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { MatButtonModule } from '@angular/material/button';
 
@@ -13,14 +12,14 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrl: './ansi-colors.component.scss'
 })
 export class AnsiColorsComponent implements OnInit {
-  colors: AnsiColor[] = [];
+  colors!: AnsiColors;
   
   constructor(
     private dataService: DataService
   ) { }
 
   ngOnInit() {
-    this.dataService.getAnsiColors(AnsiColorType.BASIC).then(colors => {
+    this.dataService.getAnsiColors().then(colors => {
       this.colors = colors;
     });
   }
