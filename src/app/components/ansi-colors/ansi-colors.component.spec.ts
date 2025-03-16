@@ -10,7 +10,7 @@ describe('AnsiColorsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AnsiColorsComponent, HttpClientTestingModule, RouterTestingModule],
+      imports: [AnsiColorsComponent, RouterTestingModule],
     })
     .compileComponents();
 

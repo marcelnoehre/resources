@@ -23,8 +23,6 @@ export class AnsiColorsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.dataService.getAnsiColors().then(colors => {
-      this.colors = colors;
-    });
+    this.colors = this.dataService.getAnsiColors();
   }
 }
