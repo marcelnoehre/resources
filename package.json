@@ -8,7 +8,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "test-headless": "ng test --browsers ChromeHeadless",
-    "ci:test-headless": "ng test --browsers ChromeHeadlessNoSandbox --watch=false"
+    "ci:test-headless": "ng test --browsers ChromeHeadlessNoSandbox --watch=false",
+    "deploy": "ng deploy --cname=marcel-noehre.de/resources --repo=https://github.com/marcelnoehre/resources.git"
   },
   "private": true,
   "dependencies": {

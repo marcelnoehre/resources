@@ -5,5 +5,4 @@ import { AnsiColorsComponent } from './components/ansi-colors/ansi-colors.compon
 export const routes: Routes = [
     { path: '', component: DashboardComponent },
     { path: 'ansi-colors', component: AnsiColorsComponent },
-    { path: '**', redirectTo: '' }
 ];
