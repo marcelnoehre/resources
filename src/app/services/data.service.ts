@@ -1,10 +1,18 @@
 import { Injectable } from '@angular/core';
 import { AnsiColors } from '../interfaces/ansi-color.interface';
+import { DashboardItem } from '../interfaces/dashboard-item.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
+  getDashboardItems(): DashboardItem[] {
+    return [
+      { title: 'ANSI Colors', url: '/ansi-colors' },
+      { title: 'Compare Text', url: '/compare-text' }
+    ];
+  }
+
   getAnsiColors(): AnsiColors {
     return {
       basic: [
