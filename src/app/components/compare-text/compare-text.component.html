@@ -10,4 +10,10 @@
       <textarea [(ngModel)]="textRight" placeholder="Right text"></textarea>
     </div>
     <button mat-raised-button (click)="compareTexts()">Compare</button>
+    @if (result) {
+        <div class="text-container">
+            <div [innerHTML]="result[0]"></div>
+            <div [innerHTML]="result[1]"></div>
+        </div>
+    }
 </div>
