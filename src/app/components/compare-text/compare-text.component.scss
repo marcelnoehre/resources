@@ -25,3 +25,14 @@
         border: 1px solid #ccc;
     }
 }
+
+table {
+    width: 90%;
+    margin: 1rem 0;
+
+    td {
+        width: 50%;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+    }
+}

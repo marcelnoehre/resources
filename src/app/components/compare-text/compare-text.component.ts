@@ -15,24 +15,39 @@ export class CompareTextComponent {
   comparisonMode: ComparisonMode = ComparisonMode.WORDS;
   textLeft = '';
   textRight = '';
-  result: SafeHtml[] = ['', ''];
-
-  constructor(private sanitizer: DomSanitizer) {}
+  result: any[][] = [];
 
   compareTexts() {
-    this.compareLines();
+    this.result = [];
+    switch (this.comparisonMode) {
+      case ComparisonMode.LINES:
+        this.compareLines();
+        break;
+      case ComparisonMode.LINES_AND_WORDS:
+        this.compareLinesAndWords();
+        break;
+      case ComparisonMode.WORDS:
+        this.compareWords();
+        break;
+      default:
+        break;
+    }
   }
 
   private compareLines() {
-    const [lines, prefix, baseStyle] = [[this.textLeft.split('\n'), this.textRight.split('\n')], 'background-color: #', '; display: flex; flex-direction: column; justify-content: center; min-height: 1.2rem; padding: 2px; margin: 0.25rem 0;'];
-    let highlighted = ['', ''];
-
-    for (let i = 0; i < Math.max(lines[0].length, lines[1].length); i++) {
-      const sides = [lines[0][i] ?? '', lines[1][i] ?? ''];
-      let style = sides.every(side => side === sides[0]) ? ['FED', 'DEF'] : ['FCA', 'ACF'];
-      highlighted.forEach((highlight, index) => highlighted[index] = `${highlight}<div style="${prefix}${style[index]}${baseStyle}">${sides[index]}</div>`);
+    for (let i = 0; i < Math.max(this.textLeft.split('\n').length, this.textRight.split('\n').length); i++) {
+      const sides = [this.textLeft.split('\n')[i] ?? '', this.textRight.split('\n')[i] ?? ''];
+      const match: boolean = sides[0] === sides[1];
+      this.result.push([{ value: sides[0], bg: match ? '#FED' : '#FCA' }, { value: sides[1], bg: match ? '#DEF' : '#ACF' }]);
     }
+  }
+  
 
-    this.result = [this.sanitizer.bypassSecurityTrustHtml(highlighted[0]), this.sanitizer.bypassSecurityTrustHtml(highlighted[1])];
+  private compareLinesAndWords() {
+
+  }
+
+  private compareWords() {
+
   }
 }

@@ -11,9 +11,14 @@
     </div>
     <button mat-raised-button (click)="compareTexts()">Compare</button>
     @if (result) {
-        <div class="text-container">
-            <div [innerHTML]="result[0]"></div>
-            <div [innerHTML]="result[1]"></div>
-        </div>
+        <table>
+            @for (row of result; track row) {
+                <tr>
+                    @for (item of row; track item) {
+                        <td [style.background-color]="item.bg">{{ item.value }}</td>
+                    }
+                </tr>
+            }
+        </table>
     }
 </div>
