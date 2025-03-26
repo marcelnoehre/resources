@@ -5,6 +5,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatButtonModule } from '@angular/material/button';
 import { TextComparisonItem } from '../../interfaces/text-comparison-item.interface';
 import { CloseComponent } from "../close/close.component";
+import { SnackbarService } from '../../services/snackbar.service';
 
 @Component({
   selector: 'app-compare-text',
@@ -18,6 +19,8 @@ export class CompareTextComponent {
   textRight = '';
   result: any = [];
 
+  constructor(private snackbarService: SnackbarService) { }
+
   compareTexts() {
     this.result = [];
     switch (this.comparisonMode) {
@@ -28,6 +31,7 @@ export class CompareTextComponent {
         this.compareWords();
         break;
       default:
+        this.snackbarService.open('Invalid comparison mode');
         break;
     }
   }
