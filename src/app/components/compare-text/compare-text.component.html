@@ -19,9 +19,7 @@
                             <td [style.background-color]="i === 0 ? '#FED' : '#DEF'">
                                 @for (subitem of item; track subitem) {
                                     <span [style.background-color]="subitem.bg">{{ subitem.value }}</span>
-                                    @if (subitem.value !== '') {
-                                        <span>&nbsp;</span>
-                                    }
+                                    <span>&nbsp;</span>
                                 }
                             </td>
                         } @else {
