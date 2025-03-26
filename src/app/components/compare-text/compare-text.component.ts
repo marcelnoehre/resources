@@ -6,10 +6,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { TextComparisonItem } from '../../interfaces/text-comparison-item.interface';
 import { CloseComponent } from "../close/close.component";
 import { SnackbarService } from '../../services/snackbar.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from '../dialog/dialog.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-compare-text',
-  imports: [FormsModule, MatButtonToggleModule, MatButtonModule, CloseComponent],
+  imports: [FormsModule, MatButtonToggleModule, MatButtonModule, MatIconModule, CloseComponent],
   templateUrl: './compare-text.component.html',
   styleUrl: './compare-text.component.scss'
 })
@@ -19,7 +22,7 @@ export class CompareTextComponent {
   textRight = '';
   result: any = [];
 
-  constructor(private snackbarService: SnackbarService) { }
+  constructor(private snackbarService: SnackbarService, private dialog: MatDialog) { }
 
   compareTexts() {
     this.result = [];
@@ -38,6 +41,16 @@ export class CompareTextComponent {
 
   isArray(item: any): boolean {
     return Array.isArray(item);
+  }
+
+  openInfo() {
+    this.dialog.open(DialogComponent, {
+      data: { 
+        title: 'Compare Text',
+        content: ['The CompareText component offers two ways to compare text. The Line Comparison method is fast, as it simply checks whether entire lines are identical. This makes it ideal for quick comparisons when only full-line differences matter.', 'For a more detailed analysis, the Word Comparison method uses an algorithm based on the Longest Common Subsequence (LCS) concept. This identifies matching sequences and highlights word-level differences, providing deeper insight into how the texts vary.', 'Choose the method that best fits your needs—speed or detailed accuracy.'],
+        action: 'OK'
+      },
+    });
   }
 
   private compareLines() {
