@@ -24,7 +24,7 @@ export class CompareTextComponent {
 
   constructor(private snackbarService: SnackbarService, private dialog: MatDialog) { }
 
-  compareTexts() {
+  public compareTexts() {
     this.result = [];
     switch (this.comparisonMode) {
       case ComparisonMode.LINES:
@@ -39,11 +39,17 @@ export class CompareTextComponent {
     }
   }
 
-  isArray(item: any): boolean {
+  public reset() {
+    this.textLeft = '';
+    this.textRight = '';
+    this.result = [];
+  }
+
+  public isArray(item: any): boolean {
     return Array.isArray(item);
   }
 
-  openInfo() {
+  public openInfo() {
     this.dialog.open(DialogComponent, {
       data: { 
         title: 'Compare Text',

@@ -31,7 +31,7 @@ export class DataService {
         { code: '\\x1b[36m', desc: 'foreground cyan', color: 'rgb(0, 204, 204)', bgColor: 'rgb(220, 220, 220)'},
         { code: '\\x1b[46m', desc: 'background cyan', color: 'rgb(0, 0, 0)', bgColor: 'rgb(0, 204, 204)'},
         { code: '\\x1b[37m', desc: 'foreground white', color: 'rgb(255, 255, 255)', bgColor: 'rgb(220, 220, 220)'},
-        { code: '\\x1b[47m', desc: 'background white', color: 'rgb(0, 0, 0)', bgColor: ''}
+        { code: '\\x1b[47m', desc: 'background white', color: 'rgb(0, 0, 0)', bgColor: 'rgb(255, 255, 255)'}
       ],
       special: [
         { code: '\\x1b[0m', desc: 'reset', color: 'rgb(0, 0, 0)', 'bgColor': 'rgb(220, 220, 220)'},

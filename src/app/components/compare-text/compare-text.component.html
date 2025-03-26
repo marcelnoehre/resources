@@ -9,7 +9,7 @@
       <textarea [(ngModel)]="textRight" placeholder="Right text"></textarea>
     </div>
     <button mat-raised-button (click)="compareTexts()">Compare</button>
-    @if (result) {
+    @if (result.length) {
         <table>
             @for (row of result; track row) {
                 <tr>
@@ -28,6 +28,9 @@
                 </tr>
             }
         </table>
+        <button mat-mini-fab (click)="reset()">
+            <mat-icon>restart_alt</mat-icon>
+        </button>
     }
 </div>
 <app-close></app-close>
