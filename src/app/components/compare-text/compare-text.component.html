@@ -14,8 +14,19 @@
         <table>
             @for (row of result; track row) {
                 <tr>
-                    @for (item of row; track item) {
-                        <td [style.background-color]="item.bg">{{ item.value }}</td>
+                    @for (item of row; track item; let i = $index) {
+                        @if (isArray(item)) {
+                            <td [style.background-color]="i === 0 ? '#FED' : '#DEF'">
+                                @for (subitem of item; track subitem) {
+                                    <span [style.background-color]="subitem.bg">{{ subitem.value }}</span>
+                                    @if (subitem.value !== '') {
+                                        <span>&nbsp;</span>
+                                    }
+                                }
+                            </td>
+                        } @else {
+                            <td [style.background-color]="item.bg">{{ item.value }}</td>
+                        }
                     }
                 </tr>
             }
