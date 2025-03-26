@@ -9,6 +9,7 @@ import { SnackbarService } from '../../services/snackbar.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../dialog/dialog.component';
 import { MatIconModule } from '@angular/material/icon';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-compare-text',
@@ -22,7 +23,11 @@ export class CompareTextComponent {
   textRight = '';
   result: any = [];
 
-  constructor(private snackbarService: SnackbarService, private dialog: MatDialog) { }
+  constructor(
+    private snackbarService: SnackbarService, 
+    private dataService: DataService,
+    private dialog: MatDialog
+  ) { }
 
   public compareTexts() {
     this.result = [];
@@ -51,11 +56,7 @@ export class CompareTextComponent {
 
   public openInfo() {
     this.dialog.open(DialogComponent, {
-      data: { 
-        title: 'Compare Text',
-        content: ['The CompareText component offers two ways to compare text. The Line Comparison method is fast, as it simply checks whether entire lines are identical. This makes it ideal for quick comparisons when only full-line differences matter.', 'For a more detailed analysis, the Word Comparison method uses an algorithm based on the Longest Common Subsequence (LCS) concept. This identifies matching sequences and highlights word-level differences, providing deeper insight into how the texts vary.', 'Choose the method that best fits your needs—speed or detailed accuracy.'],
-        action: 'OK'
-      },
+      data: this.dataService.getCompareTextInfo()
     });
   }
 

@@ -43,4 +43,16 @@ export class DataService {
       ]
     }
   }
+
+  getCompareTextInfo() {
+    return { 
+      title: 'Compare Text',
+      content: [
+        'The CompareText application offers two ways to compare text. The Line Comparison method is fast, as it simply checks whether entire lines are identical. This makes it ideal for quick comparisons when only full-line differences matter.', 
+        'For a more detailed analysis, the Word Comparison method uses an algorithm based on the Longest Common Subsequence (LCS) concept. This identifies matching sequences and highlights word-level differences, providing deeper insight into how the texts vary.', 
+        'Choose the method that best fits your needs — speed or detailed accuracy.'
+      ],
+      action: 'OK'
+    }
+  }
 }
