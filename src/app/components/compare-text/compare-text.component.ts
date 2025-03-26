@@ -23,9 +23,6 @@ export class CompareTextComponent {
       case ComparisonMode.LINES:
         this.compareLines();
         break;
-      case ComparisonMode.LINES_AND_WORDS:
-        this.compareLinesAndWords();
-        break;
       case ComparisonMode.WORDS:
         this.compareWords();
         break;
@@ -46,18 +43,13 @@ export class CompareTextComponent {
     }
   }
   
-
-  private compareLinesAndWords() {
+  private compareWords() {
     for (let i = 0; i < Math.max(this.textLeft.split('\n').length, this.textRight.split('\n').length); i++) {
       const sides = [this.textLeft.split('\n')[i] ?? '', this.textRight.split('\n')[i] ?? ''];
       const match: boolean = sides[0] === sides[1];
       if (match) this.result.push([{ value: sides[0], bg: '#FED' }, { value: sides[1], bg: '#DEF' }]);
       else this.result.push(this.handleLCS(sides[0].split(' '), sides[1].split(' ')));
     }
-  }
-
-  private compareWords() {
-
   }
 
   private lcs(seq1: string[], seq2: string[]): string[] {
