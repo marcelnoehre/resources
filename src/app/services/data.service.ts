@@ -9,7 +9,8 @@ export class DataService {
   getDashboardItems(): DashboardItem[] {
     return [
       { title: 'ANSI Colors', url: '/ansi-colors' },
-      { title: 'Compare Text', url: '/compare-text' }
+      { title: 'Compare Text', url: '/compare-text' },
+      { title: 'Latex Formatter', url: '/latex-formatter' }
     ];
   }
 
