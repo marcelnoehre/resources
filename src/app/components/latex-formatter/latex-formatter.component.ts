@@ -37,7 +37,7 @@ export class LatexFormatterComponent {
     let tmp = '';
 
     text.split(/\s+/).forEach((word) => {
-      if ((tmp + ' ' + word).trim().length > max) {
+      if ((tmp + ' ' + word).trim().length > max - 1) {
         res.push(tmp.trim());
         tmp = word;
       } else tmp += ' ' + word;
