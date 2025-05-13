@@ -9,6 +9,17 @@ h1 {
     text-align: center;
 }
 
+.chars {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    width: 5rem;
+
+    input {
+        color: white;
+    }
+}
+
 .toggle {
     width: 100vw;
     display: flex;
@@ -42,6 +53,7 @@ mat-button-toggle.mat-button-toggle-checked {
 textarea {
     box-sizing: border-box;
     width: 95%;
+    height: 25vh;
     border-radius: 10px;
     padding: 10px;
 }

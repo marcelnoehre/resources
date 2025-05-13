@@ -18,12 +18,13 @@ export class LatexFormatterComponent {
   inputText = '';
   outputText = '';
   mode: FormatterMode.SPLIT | FormatterMode.JOIN = FormatterMode.SPLIT;
+  chars: number = 80;
 
   constructor(private snackbar: SnackbarService) {}
 
   processText() {
     if (this.mode === FormatterMode.SPLIT) {
-      this.outputText = this.wrapText(this.inputText, 75);
+      this.outputText = this.wrapText(this.inputText, this.chars);
     } else if (this.mode === FormatterMode.JOIN) {
       this.outputText = this.joinText(this.inputText);
     } else {

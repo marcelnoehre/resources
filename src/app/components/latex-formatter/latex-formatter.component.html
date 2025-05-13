@@ -1,15 +1,18 @@
 <div class="latex-formatter-container">
     <h1>Latex Formatter</h1>
+    <mat-form-field appearance="outline" class="chars">
+        <input matInput type="number" [(ngModel)]="chars">
+    </mat-form-field>
     <div class="toggle">
         <mat-button-toggle-group [(ngModel)]="mode" appearance="legacy" exclusive>
-            <mat-button-toggle value="split">Split (~75 chars)</mat-button-toggle>
+            <mat-button-toggle value="split">Split (~ {{ chars }} chars)</mat-button-toggle>
             <mat-button-toggle value="join">Join (1-liner)</mat-button-toggle>
         </mat-button-toggle-group>
     </div>
     <div class="content">
-        <textarea [(ngModel)]="inputText" rows="16" cols="80" placeholder="Enter your text here..."></textarea>
+        <textarea [(ngModel)]="inputText" cols="80" placeholder="Enter your text here..."></textarea>
         <button mat-raised-button class="action" (click)="processText()">Convert</button>
-        <textarea [value]="outputText" rows="16" cols="80" readonly></textarea>
+        <textarea [value]="outputText" cols="80" readonly></textarea>
         <button mat-raised-button class="action" (click)="copy()">Copy</button>
     </div>
 </div>
