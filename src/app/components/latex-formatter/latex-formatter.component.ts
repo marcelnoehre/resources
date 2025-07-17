@@ -19,7 +19,7 @@ export class LatexFormatterComponent implements OnInit{
   outputText = '';
   mode: FormatterMode.SPLIT | FormatterMode.JOIN = FormatterMode.SPLIT;
   charKey = 'latex-formatter-chars';
-  chars: number = 120;
+  chars: number = 100;
 
   constructor(private snackbar: SnackbarService) {}
 
@@ -34,10 +34,16 @@ export class LatexFormatterComponent implements OnInit{
   }
 
   processText() {
+    const paragraphs = this.inputText.split(/\n{2,}/); // Split into paragraphs by 2+ newlines
+
     if (this.mode === FormatterMode.SPLIT) {
-      this.outputText = this.wrapText(this.inputText, this.chars);
+      this.outputText = paragraphs
+        .map(paragraph => this.wrapText(paragraph, this.chars))
+        .join('\n\n');
     } else if (this.mode === FormatterMode.JOIN) {
-      this.outputText = this.joinText(this.inputText);
+      this.outputText = paragraphs
+        .map(paragraph => this.joinText(paragraph))
+        .join('\n\n');
     } else {
       this.outputText = this.inputText;
     }
