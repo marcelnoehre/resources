@@ -1,7 +1,7 @@
 <div class="latex-formatter-container">
     <h1>Latex Formatter</h1>
     <mat-form-field appearance="outline" class="chars">
-        <input matInput type="number" [(ngModel)]="chars">
+        <input matInput type="number" [(ngModel)]="chars" (ngModelChange)="onCharsChange($event)">
     </mat-form-field>
     <div class="toggle">
         <mat-button-toggle-group [(ngModel)]="mode" appearance="legacy" exclusive>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CloseComponent } from '../close/close.component';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
@@ -14,13 +14,24 @@ import { SnackbarService } from '../../services/snackbar.service';
   templateUrl: './latex-formatter.component.html',
   styleUrl: './latex-formatter.component.scss'
 })
-export class LatexFormatterComponent {
+export class LatexFormatterComponent implements OnInit{
   inputText = '';
   outputText = '';
   mode: FormatterMode.SPLIT | FormatterMode.JOIN = FormatterMode.SPLIT;
-  chars: number = 80;
+  charKey = 'latex-formatter-chars';
+  chars: number = 120;
 
   constructor(private snackbar: SnackbarService) {}
+
+  ngOnInit(): void {
+    if (window.localStorage.getItem(this.charKey)) {
+      this.chars = Number(window.localStorage.getItem(this.charKey) || '120');
+    }
+  }
+
+  onCharsChange(value: number): void {
+    window.localStorage.setItem(this.charKey, value.toString());
+  }
 
   processText() {
     if (this.mode === FormatterMode.SPLIT) {
@@ -37,7 +48,7 @@ export class LatexFormatterComponent {
     let tmp = '';
 
     text.split(/\s+/).forEach((word) => {
-      if ((tmp + ' ' + word).trim().length > max - 1) {
+      if ((tmp + ' ' + word).trim().length > max) {
         res.push(tmp.trim());
         tmp = word;
       } else tmp += ' ' + word;
