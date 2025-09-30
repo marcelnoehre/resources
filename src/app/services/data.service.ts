@@ -10,7 +10,8 @@ export class DataService {
     return [
       { title: 'ANSI Colors', url: '/ansi-colors' },
       { title: 'Compare Text', url: '/compare-text' },
-      { title: 'Latex Formatter', url: '/latex-formatter' }
+      { title: 'Latex Formatter', url: '/latex-formatter' },
+      { title: 'Plain Math', url: '/plain-math' }
     ];
   }
 
@@ -51,7 +52,7 @@ export class DataService {
       content: [
         'The CompareText application offers two ways to compare text. The Line Comparison method is fast, as it simply checks whether entire lines are identical. This makes it ideal for quick comparisons when only full-line differences matter.', 
         'For a more detailed analysis, the Word Comparison method uses an algorithm based on the Longest Common Subsequence (LCS) concept. This identifies matching sequences and highlights word-level differences, providing deeper insight into how the texts vary.', 
-        'Choose the method that best fits your needs — speed or detailed accuracy.'
+        'Choose the method that best fits your needs - speed or detailed accuracy.'
       ],
       action: 'OK'
     }

@@ -1,0 +1,10 @@
+<div class="plain-math-container">
+    <h1>Plain Math (Prototype)</h1>
+    <div class="content">
+        <textarea [(ngModel)]="inputText" cols="80" placeholder="Enter your text here..."></textarea>
+        <button mat-raised-button class="action" (click)="processText()">Convert</button>
+        <textarea [value]="outputText" cols="80" readonly></textarea>
+        <button mat-raised-button class="action" (click)="copy()">Copy</button>
+    </div>
+</div>
+<app-close></app-close>
