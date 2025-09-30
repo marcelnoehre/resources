@@ -5,10 +5,12 @@ import { FormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MathDialogComponent } from './math-dialog/math-dialog.component';
 import { SnackbarService } from '../../services/snackbar.service';
+import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-plain-math',
-  imports: [FormsModule, MatButtonModule, CloseComponent],
+  imports: [CommonModule, FormsModule, MatButtonModule, MatIconModule, CloseComponent],
   templateUrl: './plain-math.component.html',
   styleUrl: './plain-math.component.scss'
 })
@@ -110,6 +112,11 @@ export class PlainMathComponent implements OnInit {
     } catch (err) {
       return '';
     }
+  }
+
+  removeReplacement(key: string) {
+    delete this.replaceMap[key];
+    localStorage.setItem('replaceMap', JSON.stringify(this.replaceMap));
   }
 
   copy() {

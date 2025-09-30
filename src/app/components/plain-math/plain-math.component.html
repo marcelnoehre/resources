@@ -7,4 +7,24 @@
         <button mat-raised-button class="action" (click)="copy()">Copy</button>
     </div>
 </div>
+
+<div class="replacements">
+    <h2>Replacements</h2>
+    <table>
+        <tr>
+            <th>Original</th>
+            <th>Replacement</th>
+            <th>Actions</th>
+        </tr>
+        <tr *ngFor="let entry of replaceMap | keyvalue">
+            <td>{{ entry.key }}</td>
+            <td>{{ entry.value }}</td>
+            <td>
+                <button mat-icon-button (click)="removeReplacement(entry.key)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </td>
+        </tr>
+    </table>
+</div>
 <app-close></app-close>
